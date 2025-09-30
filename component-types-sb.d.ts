@@ -57,6 +57,25 @@ export interface ConfigPageStoryblok {
   [k: string]: any;
 }
 
+export interface ContactCardStoryblok {
+  title?: string;
+  name?: string;
+  description?: string;
+  phone?: string;
+  image?: AssetStoryblok;
+  component: "contact-card";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface ContactWrapperStoryblok {
+  title?: string;
+  contactCards?: ContactCardStoryblok[];
+  component: "contact-wrapper";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface FooterStoryblok {
   content: FooterContentStoryblok[];
   socials: SocialStoryblok[];
@@ -249,7 +268,7 @@ export interface NavItemStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (TeaserStoryblok | GridWrapperStoryblok | TagsContainerStoryblok)[];
+  body?: (TeaserStoryblok | GridWrapperStoryblok | TagsContainerStoryblok | ContactWrapperStoryblok)[];
   pageColor: "" | "blue" | "mint";
   component: "page";
   _uid: string;

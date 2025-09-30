@@ -161,6 +161,104 @@
       "metadata": {}
     },
     {
+      "name": "contact-card",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-09-30T11:01:12.197Z",
+      "updated_at": "2025-09-30T11:02:50.407Z",
+      "id": 96421774124360,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true,
+          "id": "SwBgI3ZeRsqer361GMkSbg"
+        },
+        "name": {
+          "type": "text",
+          "pos": 1,
+          "id": "SylXF2S8SmenOX1hIheSKg",
+          "translatable": true
+        },
+        "description": {
+          "type": "text",
+          "pos": 2,
+          "id": "T2phS82SSLStBhP9SouhyQ",
+          "translatable": true
+        },
+        "phone": {
+          "type": "text",
+          "pos": 4,
+          "id": "aqXPuELuQw2cui8a0F-N_g",
+          "translatable": true
+        },
+        "image": {
+          "type": "asset",
+          "pos": 4,
+          "id": "SP_gE9T6Rvq6WZtzoQayQQ"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contact-card",
+      "component_group_uuid": "988b1616-dde4-44dc-b62e-51464c3c0a90",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {},
+      "component_group_name": "content"
+    },
+    {
+      "name": "contact-wrapper",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-09-30T11:00:46.329Z",
+      "updated_at": "2025-09-30T11:32:00.996Z",
+      "id": 96421668169031,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true,
+          "id": "BvT4kktbRyaqGleKm26N5g"
+        },
+        "contactCards": {
+          "type": "bloks",
+          "pos": 1,
+          "maximum": 8,
+          "id": "9qUSyzT1TsiYs8Qu6md3yA",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "contact-card"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contact-wrapper",
+      "component_group_uuid": "988b1616-dde4-44dc-b62e-51464c3c0a90",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {},
+      "component_group_name": "content"
+    },
+    {
       "name": "footer",
       "display_name": null,
       "description": "",
@@ -840,7 +938,7 @@
       "display_name": null,
       "description": null,
       "created_at": "2025-09-19T12:05:04.153Z",
-      "updated_at": "2025-09-26T10:45:53.643Z",
+      "updated_at": "2025-09-30T11:04:08.050Z",
       "id": 92544631421910,
       "schema": {
         "body": {
@@ -851,7 +949,8 @@
           "component_whitelist": [
             "teaser",
             "grid-wrapper",
-            "tags-container"
+            "tags-container",
+            "contact-wrapper"
           ]
         },
         "tab-34bf5cb2-4d5b-4c4a-9227-5db392132706": {

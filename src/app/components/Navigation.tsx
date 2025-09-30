@@ -9,7 +9,6 @@ interface Props {
   mainColor: string;
 }
 
-//a
 const Navigation: FC<Props> = ({ items, mainColor }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeChild, setActiveChild] = useState<number | null>(null);
