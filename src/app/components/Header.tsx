@@ -27,6 +27,7 @@ const fetchNavigationsItems = async (lang: string) => {
 const Header: FC<Props> = async ({ blok, lang, mainColor }) => {
   const { head } = blok;
   const items = await fetchNavigationsItems(lang);
+  console.log(mainColor);
   return (
     <header>
       <div className={`bg-${mainColor} w-full z-50 fixed top-0`}>
