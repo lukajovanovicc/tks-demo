@@ -5,13 +5,14 @@ import Image from 'next/image';
 
 interface Props {
   blok: FooterStoryblok;
+  mainColor: string;
 }
 
-const Footer: FC<Props> = ({ blok }) => {
+const Footer: FC<Props> = ({ blok, mainColor }) => {
   const { content, metaInfo, socials } = blok;
   return (
     <footer className='flex flex-col'>
-      <div className='w-full bg-blue'>
+      <div className={`w-full bg-${mainColor}`}>
         <div className='flex w-full justify-between mx-auto container py-12'>
           <div className='flex flex-col w-3/4'>
             <p className='mb-6 text-white text-2xl'>{content[0].title}</p>
@@ -23,7 +24,7 @@ const Footer: FC<Props> = ({ blok }) => {
                       key={_uid}
                       className='border-b border-white py-2 text-white'
                     >
-                      <Link href={link?.cached_url as string}>{text}</Link>
+                      <Link href={`/${link?.cached_url}`}>{text}</Link>
                     </li>
                   ))}
                 </ul>
@@ -60,11 +61,11 @@ const Footer: FC<Props> = ({ blok }) => {
         <div className='flex'>
           {metaInfo[0].links.map(({ link, text }, index) => (
             <Link
-              href={link?.cached_url as string}
+              href={`/${link?.cached_url}`}
               key={index}
               className={`${
                 index !== 4 ? 'border-r border-black' : ''
-              } text-blue px-3`}
+              } text-${mainColor} px-3`}
             >
               {text}
             </Link>

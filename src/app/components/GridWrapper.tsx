@@ -5,9 +5,10 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 
 interface Props {
   blok: GridWrapperStoryblok;
+  mainColor: string;
 }
 
-const GridWrapper: FC<Props> = ({ blok }) => {
+const GridWrapper: FC<Props> = ({ blok, mainColor }) => {
   const { grids } = blok;
 
   return (
@@ -16,7 +17,7 @@ const GridWrapper: FC<Props> = ({ blok }) => {
       {...storyblokEditable(blok)}
     >
       {grids?.map((item, index) => (
-        <Grid key={index} blok={item} />
+        <Grid key={index} blok={item} mainColor={mainColor} />
       ))}
     </div>
   );

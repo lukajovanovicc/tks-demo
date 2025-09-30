@@ -11,7 +11,7 @@ interface Props {
 const TeaserItem: FC<Props> = ({ content }) => {
   return (
     <Link
-      href={content.linkTo.cached_url as string}
+      href={`/${content.linkTo.cached_url as string}`}
       className='flex flex-col max-w-[470px] max-h-[500px] group'
       {...storyblokEditable(content)}
     >
@@ -21,6 +21,7 @@ const TeaserItem: FC<Props> = ({ content }) => {
           alt='teaser image'
           width={420}
           height={250}
+          quality={100}
           className='duration-600 transform group-hover:scale-110 w-full'
         />
       </div>

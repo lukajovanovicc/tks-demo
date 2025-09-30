@@ -10,7 +10,9 @@
   --color-foreground: var(--foreground);
   --color-blue: #00a0f0;
   --color-dark-blue: #003c7d;
+  --color-mint: #5fbebe;
   --color-grey: #d9dee8;
+  --color-light-grey: #f8f8f8;
 }
 
 body {

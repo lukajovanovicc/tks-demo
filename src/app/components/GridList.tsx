@@ -4,12 +4,15 @@ import Link from 'next/link';
 
 interface Props {
   title: string;
+  mainColor: string;
   listItems: GridListItemStoryblok[];
 }
 
-const GridList: FC<Props> = ({ title, listItems }) => {
+const GridList: FC<Props> = ({ title, listItems, mainColor }) => {
   return (
-    <div className='bg-blue h-full w-full flex flex-col p-4 text-white'>
+    <div
+      className={`bg-${mainColor} h-full w-full flex flex-col p-4 text-white`}
+    >
       <p className='text-white mb-2.5 text-2xl'>{title}</p>
       {listItems.map(({ _uid, text, link }) => (
         <Link

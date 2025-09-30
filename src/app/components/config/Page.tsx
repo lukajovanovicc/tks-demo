@@ -21,22 +21,25 @@ const fetchConfig = async (lang: string) => {
 };
 
 const Page: FC<Props> = async ({ blok, page }) => {
-  const { body } = blok;
+  const { body, pageColor } = blok;
   const lang = page !== 'de' ? 'en' : 'de';
   const { content } = await fetchConfig(lang);
   return (
     <>
       {body ? (
         <>
-          <Header blok={content.content[0]} lang={lang} />
+          <Header blok={content.content[0]} lang={lang} mainColor={pageColor} />
           <main className='mt-[300px]'>
             {body.map((nestedBlok) => (
               <div key={nestedBlok._uid}>
-                <StoryblokServerComponent blok={nestedBlok} />
+                <StoryblokServerComponent
+                  blok={nestedBlok}
+                  mainColor={pageColor}
+                />
               </div>
             ))}
           </main>
-          <Footer blok={content.content[1]} />
+          <Footer blok={content.content[1]} mainColor={pageColor} />
         </>
       ) : (
         <></>

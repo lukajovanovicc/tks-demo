@@ -7,9 +7,10 @@ import Link from 'next/link';
 
 interface Props {
   blok: GridStoryblok;
+  mainColor: string;
 }
 
-const Grid: FC<Props> = ({ blok }) => {
+const Grid: FC<Props> = ({ blok, mainColor }) => {
   const { items, styles } = blok;
 
   if (styles === 'variant-1') {
@@ -27,9 +28,13 @@ const Grid: FC<Props> = ({ blok }) => {
               key={index}
             >
               {component === 'grid-list' ? (
-                <GridList title={title} listItems={listItems} />
+                <GridList
+                  title={title}
+                  listItems={listItems}
+                  mainColor={mainColor}
+                />
               ) : (
-                <Link href={linkTo?.cached_url as string}>
+                <Link href={`/${linkTo?.cached_url as string}`}>
                   {asset?.filename?.includes('.mp4') ? (
                     <VideoPlayer src={asset.filename} poster='' />
                   ) : (
@@ -38,16 +43,23 @@ const Grid: FC<Props> = ({ blok }) => {
                       alt='grid-img'
                       width={index === 0 ? 715 : 350}
                       height={index === 0 ? 450 : 300}
+                      quality={100}
                       className='w-full h-full'
                     />
                   )}
                   <div className='flex flex-col absolute bottom-4 z-10'>
-                    <p className='bg-blue text-white text-2xl w-fit p-1'>
+                    <p
+                      className={`bg-${mainColor} text-white text-2xl w-fit p-1`}
+                    >
                       {headline}
                     </p>
-                    <p className='bg-blue text-white text-[16px] mt-4 w-fit p-1'>
-                      {text}
-                    </p>
+                    {text && (
+                      <p
+                        className={`bg-${mainColor} text-white text-[16px] mt-4 w-fit p-1`}
+                      >
+                        {text}
+                      </p>
+                    )}
                   </div>
                 </Link>
               )}
@@ -72,9 +84,13 @@ const Grid: FC<Props> = ({ blok }) => {
               key={index}
             >
               {component === 'grid-list' ? (
-                <GridList title={title} listItems={listItems} />
+                <GridList
+                  title={title}
+                  listItems={listItems}
+                  mainColor={mainColor}
+                />
               ) : (
-                <Link href={linkTo?.cached_url as string}>
+                <Link href={`/${linkTo?.cached_url as string}`}>
                   {asset?.filename?.includes('.mp4') ? (
                     <VideoPlayer src={asset.filename} poster='' />
                   ) : (
@@ -83,16 +99,23 @@ const Grid: FC<Props> = ({ blok }) => {
                       alt='grid-img'
                       width={index === 2 ? 715 : 350}
                       height={index === 2 ? 450 : 300}
+                      quality={100}
                       className='w-full h-full'
                     />
                   )}
                   <div className='flex flex-col absolute bottom-4 z-10'>
-                    <p className='bg-blue text-white text-2xl w-fit p-1'>
+                    <p
+                      className={`bg-${mainColor} text-white text-2xl w-fit p-1`}
+                    >
                       {headline}
                     </p>
-                    <p className='bg-blue text-white text-[16px] mt-4 w-fit p-1'>
-                      {text}
-                    </p>
+                    {text && (
+                      <p
+                        className={`bg-${mainColor} text-white text-[16px] mt-4 w-fit p-1`}
+                      >
+                        {text}
+                      </p>
+                    )}
                   </div>
                 </Link>
               )}
@@ -115,9 +138,13 @@ const Grid: FC<Props> = ({ blok }) => {
             key={index}
           >
             {component === 'grid-list' ? (
-              <GridList title={title} listItems={listItems} />
+              <GridList
+                title={title}
+                listItems={listItems}
+                mainColor={mainColor}
+              />
             ) : (
-              <Link href={linkTo?.cached_url as string}>
+              <Link href={`/${linkTo?.cached_url as string}`}>
                 {asset?.filename?.includes('.mp4') ? (
                   <VideoPlayer src={asset.filename} poster='' />
                 ) : (
@@ -125,6 +152,7 @@ const Grid: FC<Props> = ({ blok }) => {
                     src={asset?.filename as string}
                     alt='grid-img'
                     className='w-full h-full'
+                    quality={100}
                     width={Number(asset?.filename?.split('/')[5].split('x')[0])}
                     height={Number(
                       asset?.filename?.split('/')[5].split('x')[1]
@@ -132,12 +160,18 @@ const Grid: FC<Props> = ({ blok }) => {
                   />
                 )}
                 <div className='flex flex-col absolute bottom-4 z-10'>
-                  <p className='bg-blue text-white text-2xl w-fit p-1'>
+                  <p
+                    className={`bg-${mainColor} text-white text-2xl w-fit p-1`}
+                  >
                     {headline}
                   </p>
-                  <p className='bg-blue text-white text-[16px] mt-4 w-fit p-1'>
-                    {text}
-                  </p>
+                  {text && (
+                    <p
+                      className={`bg-${mainColor} text-white text-[16px] mt-4 w-fit p-1`}
+                    >
+                      {text}
+                    </p>
+                  )}
                 </div>
               </Link>
             )}

@@ -5,21 +5,24 @@ import { getStoryblokApi } from '../core/storyblok';
 interface Props {
   params: any;
 }
-const fetchSlug = async (story: string, lang: string) => {
+const fetchSlug = async (story: string[], lang: string) => {
   const client = getStoryblokApi();
 
-  const response = await client.getStory(`${story}`, {
-    version: 'draft',
-    language: lang,
-  });
+  const response = await client.getStory(
+    `${story.length > 1 ? story.join('/') : story}`,
+    {
+      version: 'draft',
+      language: lang,
+    }
+  );
   return response.data.story;
 };
 
 const SlugPage: FC<Props> = async ({ params }) => {
   const { slug } = await params;
   const data = await fetchSlug(
-    slug.length > 1 ? slug[1] : slug[0],
-    slug.length > 1 ? slug[0] : 'default'
+    slug[0] === 'de' ? slug.slice(1) : slug,
+    slug[0] === 'de' ? slug[0] : 'default'
   );
   return (
     <>

@@ -24,9 +24,10 @@ const useClickOutside = (handler: () => void) => {
 
 interface Props {
   lang: string;
+  mainColor: string;
 }
 
-const Dropdown: FC<Props> = ({ lang }) => {
+const Dropdown: FC<Props> = ({ lang, mainColor }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const domNode = useClickOutside(() => {
@@ -64,14 +65,14 @@ const Dropdown: FC<Props> = ({ lang }) => {
           {lang !== 'de' ? (
             <Link
               href='/de/home'
-              className='text-blue w-full block py-2 text-center'
+              className={`text-${mainColor} w-full block py-2 text-center`}
             >
               Deustch
             </Link>
           ) : (
             <Link
               href='/home'
-              className='text-blue w-full block py-2 text-center'
+              className={`text-${mainColor} w-full block py-2 text-center`}
             >
               English
             </Link>

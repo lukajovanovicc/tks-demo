@@ -4,17 +4,32 @@ import Image from 'next/image';
 import { HeaderStoryblok } from '../../../component-types-sb';
 import Dropdown from './Dropdown';
 import Navigation from './Navigation';
+import { getStoryblokApi } from '../core/storyblok';
+import { groupByFullSlug } from '../core/navigation';
 
 interface Props {
   blok: HeaderStoryblok;
   lang: string;
+  mainColor: string;
 }
 
-const Header: FC<Props> = ({ blok, lang }) => {
-  const { head, navigation } = blok;
+const fetchNavigationsItems = async (lang: string) => {
+  const storyblokApi = getStoryblokApi();
+  const stories = await storyblokApi.getStories({
+    version: 'draft',
+    language: lang,
+  });
+
+  const navigation = groupByFullSlug(stories.data.stories);
+  return navigation;
+};
+
+const Header: FC<Props> = async ({ blok, lang, mainColor }) => {
+  const { head } = blok;
+  const items = await fetchNavigationsItems(lang);
   return (
     <header>
-      <div className='bg-blue w-full z-50 fixed top-0'>
+      <div className={`bg-${mainColor} w-full z-50 fixed top-0`}>
         <div className='flex justify-between container mx-auto w-full items-center '>
           <div className='flex gap-12 items-end py-12'>
             <Link href={'/'}>
@@ -37,11 +52,11 @@ const Header: FC<Props> = ({ blok, lang }) => {
             <ul className='flex gap-4 text-white mb-4'>
               {head[0].metaLinks?.map(({ link, text, _uid }) => (
                 <li key={_uid} className='hover:underline'>
-                  <Link href={link?.cached_url as string}>{text}</Link>
+                  <Link href={`/${link?.cached_url}`}>{text}</Link>
                 </li>
               ))}
               <li>
-                <Dropdown lang={lang} />
+                <Dropdown lang={lang} mainColor={mainColor} />
               </li>
             </ul>
 
@@ -49,7 +64,7 @@ const Header: FC<Props> = ({ blok, lang }) => {
           </div>
         </div>
 
-        <Navigation items={navigation} />
+        <Navigation items={items} mainColor={mainColor} />
       </div>
     </header>
   );

@@ -8,6 +8,48 @@ export interface ButtonStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
+  id: number;
+  filename: string | null;
+  name: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
+  [k: string]: any;
+}
+
+export interface CardStoryblok {
+  image?: AssetStoryblok;
+  title: string;
+  description: string;
+  component: "card";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CategoriesStoryblok {
+  title: string;
+  items: LinkStoryblok[];
+  component: "categories";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface ConfigPageStoryblok {
   content: (FooterStoryblok | HeaderStoryblok)[];
   component: "config-page";
@@ -113,31 +155,6 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
-export interface AssetStoryblok {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
-  id: number;
-  filename: string | null;
-  name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
-  [k: string]: any;
-}
-
 export interface FooterMediaStoryblok {
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   image?: AssetStoryblok;
@@ -223,6 +240,7 @@ export interface LinkStoryblok {
 export interface NavItemStoryblok {
   title?: string;
   description?: string;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   button: ButtonStoryblok[];
   secondLevel?: SecondLevelStoryblok[];
   component: "nav-item";
@@ -231,7 +249,8 @@ export interface NavItemStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (TeaserStoryblok | GridWrapperStoryblok)[];
+  body?: (TeaserStoryblok | GridWrapperStoryblok | TagsContainerStoryblok)[];
+  pageColor: "" | "blue" | "mint";
   component: "page";
   _uid: string;
   [k: string]: any;
@@ -251,6 +270,15 @@ export interface SocialStoryblok {
   link: string;
   media?: FooterMediaStoryblok[];
   component: "social";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TagsContainerStoryblok {
+  title: string;
+  cards: CardStoryblok[];
+  categories: CategoriesStoryblok[];
+  component: "tags-container";
   _uid: string;
   [k: string]: any;
 }
