@@ -27,10 +27,11 @@ const fetchNavigationsItems = async (lang: string) => {
 const Header: FC<Props> = async ({ blok, lang, mainColor }) => {
   const { head } = blok;
   const items = await fetchNavigationsItems(lang);
-  console.log(mainColor);
   return (
     <header>
-      <div className={`bg-${mainColor} w-full z-50 fixed top-0`}>
+      <div
+        className={`bg-${mainColor} bg-blue bg-mint text-mint w-full z-50 fixed top-0`}
+      >
         <div className='flex justify-between container mx-auto w-full items-center '>
           <div className='flex gap-12 items-end py-12'>
             <Link href={'/'}>

@@ -21,6 +21,7 @@ const ContactCard: FC<Props> = ({ card }) => {
         alt='card image'
         width={265}
         height={290}
+        quality={100}
         className='my-6'
       />
       <p className='text-[16px]'>{card.phone}</p>
