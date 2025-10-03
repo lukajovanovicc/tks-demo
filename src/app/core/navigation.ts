@@ -2,7 +2,9 @@ import { Story } from './types';
 
 export function groupByFullSlug(stories: Story[]) {
   const filtered = stories.filter(
-    (s) => !['home', 'config'].includes(s.name.toLowerCase())
+    (s) =>
+      !['home', 'config'].includes(s.name.toLowerCase()) &&
+      !s.full_slug.startsWith('content/')
   );
 
   const map: Record<string, Story & { children: Story[] }> = {};

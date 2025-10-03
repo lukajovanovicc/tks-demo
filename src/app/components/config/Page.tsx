@@ -35,6 +35,7 @@ const Page: FC<Props> = async ({ blok, page }) => {
                 <StoryblokServerComponent
                   blok={nestedBlok}
                   mainColor={pageColor}
+                  lang={lang}
                 />
               </div>
             ))}

@@ -10,6 +10,7 @@ import Grid from '../components/Grid';
 import GridWrapper from '../components/GridWrapper';
 import TagsContainer from '../components/TagsContainer';
 import ContactWrapper from '../components/ContactWrapper';
+import StoryContent from '../components/StoryContent';
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_CONTENT_API_ACCESS_TOKEN,
@@ -23,6 +24,7 @@ export const getStoryblokApi = storyblokInit({
     button: Button,
     'grid-wrapper': GridWrapper,
     'contact-wrapper': ContactWrapper,
+    'story-content': StoryContent,
     'tags-container': TagsContainer,
     grid: Grid,
     teaser: Teaser,

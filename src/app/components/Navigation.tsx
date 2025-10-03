@@ -41,7 +41,7 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
   return (
     <nav ref={navRef} className='w-full bg-white'>
       <div
-        className={`container mx-auto flex justify-between w-full text-2xl text-${mainColor}`}
+        className={`container mx-auto flex justify-between h-16 items-center w-full text-2xl text-${mainColor}`}
       >
         <ul className='w-full flex gap-4 py-6'>
           {items.map((item, index) => (

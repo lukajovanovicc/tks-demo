@@ -268,9 +268,31 @@ export interface NavItemStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (TeaserStoryblok | GridWrapperStoryblok | TagsContainerStoryblok | ContactWrapperStoryblok)[];
+  body?: (
+    | TeaserStoryblok
+    | GridWrapperStoryblok
+    | TagsContainerStoryblok
+    | ContactWrapperStoryblok
+    | StoryContentStoryblok
+  )[];
   pageColor: "" | "blue" | "mint";
   component: "page";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
+export interface ParagraphStoryblok {
+  text?: RichtextStoryblok;
+  component: "paragraph";
   _uid: string;
   [k: string]: any;
 }
@@ -293,9 +315,26 @@ export interface SocialStoryblok {
   [k: string]: any;
 }
 
+export interface StageStoryblok {
+  introtext: string;
+  paragraph: string;
+  image?: AssetStoryblok;
+  component: "stage";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface StoryContentStoryblok {
+  title: string;
+  poster: AssetStoryblok;
+  contentBlocks?: (ParagraphStoryblok | TextImageStoryblok | StageStoryblok)[];
+  component: "story-content";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface TagsContainerStoryblok {
   title: string;
-  cards: CardStoryblok[];
   categories: CategoriesStoryblok[];
   component: "tags-container";
   _uid: string;
@@ -316,6 +355,15 @@ export interface TeaserItemStoryblok {
   text?: string;
   linkTo: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "teaser-item";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TextImageStoryblok {
+  title: string;
+  text?: RichtextStoryblok;
+  image?: AssetStoryblok;
+  component: "text-image";
   _uid: string;
   [k: string]: any;
 }
