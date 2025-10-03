@@ -14,9 +14,9 @@ const CategoriesContainer: FC<Props> = ({ content, mainColor }) => {
       className='flex flex-col p-6 bg-light-grey rounded-lg w-1/3 max-h-[450px]'
       {...storyblokEditable(content)}
     >
-      <h2 className='text-[36px] mb-4'>{content.title}</h2>
+      <h2 className='text-[36px] mb-4'>{content?.title}</h2>
       <ul>
-        {content.items.map(({ _uid, text, link }) => (
+        {content?.items.map(({ _uid, text, link }) => (
           <li key={_uid} className='mb-4'>
             <Link
               href={`/${link?.cached_url}`}
