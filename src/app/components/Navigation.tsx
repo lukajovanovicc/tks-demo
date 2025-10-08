@@ -46,6 +46,7 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
         <ul className='w-full flex gap-4 py-6'>
           {items.map((item, index) => (
             <li
+              role='button'
               key={item.id}
               className='cursor-pointer group flex flex-col relative'
               onClick={() => handleToggle(index)}
@@ -127,10 +128,10 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
             {/* Right column for third-level */}
             <li
               className={`flex flex-col duration-300 ${
-                activeChild !== null ? 'w-1/3' : 'w-0'
+                activeChild === null ? 'w-0' : 'w-1/3'
               }`}
             >
-              {activeChild !== null && (
+              {activeChild && (
                 <>
                   {/* Parent element (Overview link for the second-level item) */}
                   <div
