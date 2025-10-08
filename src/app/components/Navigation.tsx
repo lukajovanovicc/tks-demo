@@ -46,12 +46,10 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
         <ul className='w-full flex gap-4 py-6'>
           {items.map((item, index) => (
             <li
-              role='button'
               key={item.id}
               className='cursor-pointer group flex flex-col relative'
-              onClick={() => handleToggle(index)}
             >
-              {item.name}
+              <button onClick={() => handleToggle(index)}>{item.name}</button>
               <span
                 className={`${
                   openIndex === index ? 'opacity-100' : 'opacity-0'
@@ -65,9 +63,9 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
       {/* Submenu */}
       <div
         className={`w-full duration-300 ${
-          openIndex !== null
-            ? 'border-t-2 border-[#eef0f2] max-h-screen py-12'
-            : 'border-none max-h-0'
+          openIndex === null
+            ? 'border-none max-h-0'
+            : 'border-t-2 border-[#eef0f2] max-h-screen py-12'
         }`}
       >
         {openIndex !== null && (
@@ -131,7 +129,7 @@ const Navigation: FC<Props> = ({ items, mainColor }) => {
                 activeChild === null ? 'w-0' : 'w-1/3'
               }`}
             >
-              {activeChild && (
+              {activeChild !== null && (
                 <>
                   {/* Parent element (Overview link for the second-level item) */}
                   <div
