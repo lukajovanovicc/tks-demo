@@ -4,7 +4,8 @@ export function groupByFullSlug(stories: Story[]) {
   const filtered = stories.filter(
     (s) =>
       !['home', 'config'].includes(s.name.toLowerCase()) &&
-      !s.full_slug.startsWith('content/')
+      !s.full_slug.startsWith('content/') &&
+      !s.full_slug.startsWith('de/content/')
   );
 
   const map: Record<string, Story & { children: Story[] }> = {};
@@ -22,14 +23,10 @@ export function groupByFullSlug(stories: Story[]) {
 
     if (parentPath && map[parentPath]) {
       map[parentPath].children.push(map[slug]);
-      map[parentPath].children.sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
-      );
+      map[parentPath].children.sort((a, b) => a.name.localeCompare(b.name));
     } else {
       tree.push(map[slug]);
-      tree.sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
-      );
+      tree.sort((a, b) => a.name.localeCompare(b.name));
     }
   });
 
